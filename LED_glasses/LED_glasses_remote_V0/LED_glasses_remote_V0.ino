@@ -21,7 +21,7 @@
 
 // code working with multiple of 8 for NUM_LEDS
 const int LED_PIN = 3;
-const int NUM_LEDS = 33;
+const int NUM_LEDS = 136;
 
 uint8_t brightness = 50;            // nominal leds brightness
 uint8_t fadeByBlack = 15;            // the amount of brightness to decrease
@@ -35,6 +35,13 @@ IRrecv irrecv(RECV_PIN);
 decode_results results;
 
 CRGB leds[NUM_LEDS];    // creating the led array
+
+DEFINE_GRADIENT_PALETTE( black_gp )  {
+    0,    0,    0,    0,        //black
+  128,  0,    0,    0,        //black
+  200,  0,  0,    0,        //black
+  255,  0,  0,  0         //black  
+};
 
 DEFINE_GRADIENT_PALETTE( heatmap_gp )  {
     0,    0,    0,    0,        //black
@@ -118,6 +125,7 @@ CRGBPalette16 blue_palette = blue_gp;
 CRGBPalette16 green_palette = green_gp;
 CRGBPalette16 purple_palette = purple_gp;
 CRGBPalette16 pink_palette = pink_gp;
+CRGBPalette16 black_palette = black_gp;
 
 CRGBPalette16 choice_palette = stJeanOLD_palette;
 String choice_palette_string = "St-Jean OLD";
@@ -325,14 +333,15 @@ void IRremote_switch_case() {
       case 0xFF9867:
         Serial.println("100+ button pressed!"); 
         digitalWrite(RECV_LED_PIN, HIGH);   
-        n_milliseconds = 25; 
+        n_milliseconds = 50; 
       break;
   
       // 200+ button
       case 0xFFB04F:
         Serial.println("200+ button pressed!");
         digitalWrite(RECV_LED_PIN, HIGH);
-        n_milliseconds = 50;
+        choice_palette = black_palette;
+        choice_palette_string = "Black";
       break;
 
 

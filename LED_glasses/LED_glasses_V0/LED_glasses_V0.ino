@@ -23,26 +23,12 @@
 #define DATA_PIN        3
 #define NUM_LEDS        33
 
-unsigned long n_milliseconds = 25;
+unsigned long n_milliseconds = 20;
 uint8_t brightness = 50;
 
 // creating the led array
 CRGB leds[NUM_LEDS];
 
-
-DEFINE_GRADIENT_PALETTE( heatmap_gp )  {
-    0,    0,    0,    0,        //black
-  128,  255,    0,    0,        //red
-  200,  255,  255,    0,        //bright yellow
-  255,  255,  255,  255,         //full white  
-};
-
-DEFINE_GRADIENT_PALETTE( heatmapV2_gp )  {
-    0,  255,    255,    0,        //bright yellow
-  128,  255,    165,    0,          //orange
-  200,  255,      0,    0,              //red
-  255,  255,    255,  255,             //full white  
-};
 
 DEFINE_GRADIENT_PALETTE( stjean_gp )  {
     0,    0,  255,    245,        //Cyan
@@ -53,8 +39,6 @@ DEFINE_GRADIENT_PALETTE( stjean_gp )  {
 
 // creating palettes
 CRGBPalette16 stJean_palette = stjean_gp;
-//CRGBPalette16 heat_palette = heatmap_gp;
-//CRGBPalette16 heatV2_palette = heatmapV2_gp;
 
 
 
